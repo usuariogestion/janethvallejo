@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janeth Vallejo — Producción Audiovisual & Diseño Gráfico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12201f;
+    --ink-soft:#1c2f2d;
+    --paper:#f2ede1;
+    --paper-dim:#e6dfcd;
+    --brass:#a9803f;
+    --brass-soft:#c9a468;
+    --tally:#b6402c;
+    --slate:#5c6b64;
+    --line: rgba(18,32,31,0.14);
+    --line-light: rgba(242,237,225,0.18);
+    --radius: 2px;
+    --serif: "Bitter", "Iowan Old Style", serif;
+    --sans: "IBM Plex Sans", -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(242,237,225,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .nav-name{
+    font-family:var(--serif); font-size:1.05rem; font-weight:600; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    font-size:0.88rem; text-decoration:none; color:var(--slate);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--ink); border-color:var(--brass);}
+  .nav-links{display:none;}
+  @media (min-width:640px){ .nav-links{display:flex;} }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  header.hero .wrap{
+    padding-top:96px; padding-bottom:96px;
+    display:grid; grid-template-columns:1fr; gap:48px;
+  }
+  @media (min-width:760px){
+    header.hero .wrap{grid-template-columns:1.3fr 0.9fr; align-items:center;}
+  }
+  .rec-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.04em;
+    color:var(--paper-dim); margin-bottom:22px;
+  }
+  .rec-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--tally);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;} 50%{opacity:0.35;}
+  }
+  h1.name{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    line-height:1.04; margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-size:1.05rem; color:var(--paper-dim); max-width:36ch; margin:0 0 30px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:18px 28px;
+    font-family:var(--mono); font-size:0.82rem; color:var(--brass-soft);
+  }
+  .hero-meta a{text-decoration:none;}
+  .hero-meta a:hover{color:var(--paper);}
+
+  .portrait-frame{
+    position:relative; aspect-ratio:4/5;
+    border:1px solid var(--line-light);
+    padding:10px;
+  }
+  .portrait-inner{
+    width:100%; height:100%;
+    background:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .portrait-inner svg{width:46%; opacity:0.55;}
+  .portrait-caption{
+    position:absolute; bottom:-2px; left:10px; right:10px;
+    display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:0.68rem; color:var(--brass-soft);
+    transform:translateY(100%); padding-top:8px;
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:76px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex; align-items:baseline; gap:18px; margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .section-num{
+    font-family:var(--mono); font-size:0.8rem; color:var(--brass);
+  }
+  h2.section-title{
+    font-family:var(--serif); font-weight:500; font-size:clamp(1.5rem,3vw,2rem);
+    margin:0;
+  }
+  .lede{max-width:62ch; color:var(--slate); font-size:1.02rem;}
+
+  /* ---------- SOBRE MÍ ---------- */
+  .about-grid{display:grid; gap:32px;}
+  @media (min-width:760px){ .about-grid{grid-template-columns:1fr 1fr;} }
+  .about-grid p{margin:0 0 16px; color:var(--ink); max-width:52ch;}
+  .skills-list{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .skills-list li{
+    display:flex; justify-content:space-between; gap:12px;
+    padding:10px 0; border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .skills-list span:last-child{color:var(--slate); font-family:var(--mono); font-size:0.8rem;}
+
+  /* ---------- TRAYECTORIA (timeline) ---------- */
+  .timeline{border-left:1px solid var(--line); margin-left:6px;}
+  .tl-item{position:relative; padding:0 0 44px 32px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-5px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--brass);
+  }
+  .tl-date{font-family:var(--mono); font-size:0.78rem; color:var(--brass); margin-bottom:6px;}
+  .tl-role{font-family:var(--serif); font-size:1.2rem; font-weight:500; margin:0 0 4px;}
+  .tl-org{font-size:0.92rem; color:var(--slate); margin:0 0 10px;}
+  .tl-desc{font-size:0.92rem; color:var(--ink); max-width:56ch; margin:0;}
+
+  /* ---------- KIT TÉCNICO ---------- */
+  .kit-grid{display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (min-width:640px){ .kit-grid{grid-template-columns:repeat(2,1fr);} }
+  .kit-cell{background:var(--paper); padding:26px;}
+  .kit-cell h3{
+    font-family:var(--mono); font-size:0.78rem; text-transform:none;
+    color:var(--brass); margin:0 0 14px; letter-spacing:0.02em;
+  }
+  .kit-cell ul{margin:0; padding:0; list-style:none; display:grid; gap:8px;}
+  .kit-cell li{font-size:0.92rem; display:flex; gap:10px;}
+  .kit-cell li::before{content:"—"; color:var(--brass-soft);}
+
+  /* ---------- PORTAFOLIO ---------- */
+  .port-grid{display:grid; gap:26px;}
+  @media (min-width:640px){ .port-grid{grid-template-columns:repeat(2,1fr);} }
+  .port-card{
+    border:1px solid var(--line); padding:4px;
+  }
+  .port-thumb{
+    aspect-ratio:16/10; background:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--brass-soft); font-family:var(--mono); font-size:0.75rem;
+  }
+  .port-body{padding:18px 14px 20px;}
+  .port-tag{font-family:var(--mono); font-size:0.7rem; color:var(--brass); margin-bottom:6px; display:block;}
+  .port-title{font-family:var(--serif); font-size:1.15rem; margin:0 0 6px;}
+  .port-desc{font-size:0.88rem; color:var(--slate); margin:0;}
+
+  /* ---------- REEL ---------- */
+  .reel-frame{
+    position:relative; aspect-ratio:16/9;
+    background:var(--ink); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--paper-dim); font-family:var(--mono); font-size:0.85rem;
+    text-align:center; padding:20px;
+  }
+  .reel-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+
+  /* ---------- CONTACTO ---------- */
+  .contact-block{
+    background:var(--ink); color:var(--paper);
+    padding:76px 0;
+  }
+  .contact-block .section-title, .contact-block .section-num{color:var(--paper);}
+  .contact-block .lede{color:var(--paper-dim);}
+  .contact-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:14px;}
+  .contact-list a{
+    font-family:var(--serif); font-size:1.3rem; text-decoration:none;
+    border-bottom:1px solid var(--line-light); padding-bottom:2px;
+  }
+  .contact-list a:hover{border-color:var(--brass);}
+  .contact-list span{display:block; font-family:var(--mono); font-size:0.72rem; color:var(--brass-soft); margin-bottom:4px;}
+
+  footer{
+    padding:26px 0; background:var(--ink); color:var(--paper-dim);
+    font-family:var(--mono); font-size:0.72rem; border-top:1px solid var(--line-light);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Janeth Vallejo</div>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#kit">Kit técnico</a></li>
+      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#reel">Reel</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="name">Janeth Vallejo</h1>
+      <p class="role-line">Diseñadora gráfica y productora audiovisual — diagramación editorial, producción de video y contenidos e-learning.</p>
+      <div class="hero-meta">
+        <a href="tel:+593984593173">+593 98 459 3173</a>
+        <a href="mailto:ejanethvallejo@gmail.com">ejanethvallejo@gmail.com</a>
+        <span>Ecuador</span>
+      </div>
+    </div>
+    <!-- FOTO: ya está cargada; el archivo foto.jpg va en la carpeta assets/ del repositorio -->
+    <div class="portrait-frame">
+      <div class="portrait-inner">
+        <img src="assets/foto.jpg" alt="Janeth Vallejo" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Sobre mí</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Diseñadora gráfica con más de una década de experiencia entre producción audiovisual corporativa y diagramación editorial institucional. He trabajado tanto en el desarrollo de piezas visuales para comunicación interna y de marca, como en la edición y diagramación de una publicación oficial de circulación continua.</p>
+        <p>Combino la mirada editorial —cuidado por el detalle, consistencia y ritmo visual— con producción audiovisual práctica: grabación, edición y montaje de contenidos institucionales y formativos.</p>
+      </div>
+      <ul class="skills-list">
+        <li><span>Diagramación editorial</span><span>Avanzado</span></li>
+        <li><span>Producción audiovisual</span><span>Avanzado</span></li>
+        <li><span>Edición de video</span><span>Avanzado</span></li>
+        <li><span>Diseño instruccional / e-learning</span><span>Intermedio</span></li>
+        <li><span>Identidad y comunicación visual</span><span>Avanzado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="trayectoria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Trayectoria</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2015 — Actualidad</div>
+        <h3 class="tl-role">Editora del Registro Oficial</h3>
+        <p class="tl-org">Corte Constitucional del Ecuador — Registro Oficial</p>
+        <p class="tl-desc">Diagramación y corrección de publicaciones oficiales, propuestas de diseño gráfico para campañas de difusión institucional, y digitalización y clasificación de contenidos.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2018 — 2023</div>
+        <h3 class="tl-role">Diseñadora Gráfica — Proyectos E-learning y Editoriales</h3>
+        <p class="tl-org">ALDIR, Alta Dirección Consultores Asociados — Área de Capacitación</p>
+        <p class="tl-desc">Desarrollo de proyectos de diseño gráfico para contenidos e-learning y editoriales.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2014 — 2023</div>
+        <h3 class="tl-role">Diseñadora Gráfica — Gestión de Proyectos E-learning</h3>
+        <p class="tl-org">Banco Pichincha — Capacitación y Desarrollo Organizacional</p>
+        <p class="tl-desc">Diseño gráfico y gestión de proyectos e-learning para capacitación corporativa.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021 — 2022</div>
+        <h3 class="tl-role">Diseñadora Gráfica — Producción de Contenido y Video Tutoriales</h3>
+        <p class="tl-org">Banco de Loja — Recursos Humanos y SSO</p>
+        <p class="tl-desc">Producción de contenido y video tutoriales para proyectos e-learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificaciones">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Formación complementaria</h2>
+    </div>
+    <div class="kit-grid">
+      <div class="kit-cell">
+        <h3>PROGRAMA DE FORMACIÓN DIGITAL CONECTA EMPLEO</h3>
+        <ul>
+          <li>Redacción Corporativa — 30h</li>
+          <li>Tácticas de Negociación Efectiva — 30h</li>
+          <li>Conviértete en un Líder — 2h</li>
+        </ul>
+      </div>
+      <div class="kit-cell">
+        <h3>CAPACÍTATE PARA EL EMPLEO — FUNDACIÓN CARLOS SLIM</h3>
+        <ul>
+          <li>Manejo de Juntas de Trabajo — 10h</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Kit técnico</h2>
+    </div>
+    <p class="lede" style="margin-bottom:32px;">Equipo y software con los que cubro captura, edición y contenidos formativos.</p>
+    <div class="kit-grid">
+      <div class="kit-cell">
+        <h3>CAPTURA</h3>
+        <ul>
+          <li>Cámara réflex Canon Full HD</li>
+          <li>Equipo de iluminación profesional</li>
+          <li>Micrófonos de grabación</li>
+        </ul>
+      </div>
+      <div class="kit-cell">
+        <h3>SOFTWARE</h3>
+        <ul>
+          <li>Adobe Creative Cloud — paquete completo</li>
+          <li>Camtasia</li>
+          <li>Adobe Captivate</li>
+          <li>IA en la postproducción</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portafolio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Portafolio</h2>
+    </div>
+    <p class="lede" style="margin-bottom:32px;">Selección de proyectos — nombres genéricos por ahora, listos para reemplazar por casos reales.</p>
+    <!-- PROYECTOS: reemplazar título, etiqueta y descripción de cada tarjeta por proyectos reales -->
+    <div class="port-grid">
+      <div class="port-card">
+        <div class="port-thumb">IMAGEN / CAPTURA</div>
+        <div class="port-body">
+          <span class="port-tag">ANIMACIÓN</span>
+          <h3 class="port-title">Proyecto institucional 01</h3>
+          <p class="port-desc">Descripción breve del proyecto: contexto, rol y resultado.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div class="port-thumb">IMAGEN / CAPTURA</div>
+        <div class="port-body">
+          <span class="port-tag">IMAGEN CORPORATIVA</span>
+          <h3 class="port-title">Proyecto institucional 02</h3>
+          <p class="port-desc">Descripción breve del proyecto: contexto, rol y resultado.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div class="port-thumb">IMAGEN / CAPTURA</div>
+        <div class="port-body">
+          <span class="port-tag">E-LEARNING</span>
+          <h3 class="port-title">Proyecto institucional 03</h3>
+          <p class="port-desc">Descripción breve del proyecto: contexto, rol y resultado.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div class="port-thumb">IMAGEN / CAPTURA</div>
+        <div class="port-body">
+          <span class="port-tag">CAMPAÑAS COMUNICACIONALES</span>
+          <h3 class="port-title">Proyecto institucional 04</h3>
+          <p class="port-desc">Descripción breve del proyecto: contexto, rol y resultado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reel">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Reel</h2>
+    </div>
+    <!--
+      REEMPLAZAR el div de abajo por el iframe real cuando tengas el link:
+      YouTube (oculto): <iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" allowfullscreen></iframe>
+      Drive: <iframe src="https://drive.google.com/file/d/ID_DEL_ARCHIVO/preview" allow="autoplay"></iframe>
+    -->
+    <div class="reel-frame">
+      <iframe src="https://www.youtube.com/embed/wfexlIeT2nw" title="Reel — Animación Seguridad y Salud Ocupacional" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="educacion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Educación</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2014</div>
+        <h3 class="tl-role">Ingeniera en Diseño Gráfico</h3>
+        <p class="tl-org">Escuela Superior Politécnica de Chimborazo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-block" id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Contacto</h2>
+    </div>
+    <p class="lede">Disponible para coordinación de proyectos audiovisuales y editoriales.</p>
+    <ul class="contact-list">
+      <li><span>TELÉFONO</span><a href="tel:+593984593173">+593 98 459 3173</a></li>
+      <li><span>CORREO</span><a href="mailto:ejanethvallejo@gmail.com">ejanethvallejo@gmail.com</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Janeth Vallejo</span>
+    <span>Producción Audiovisual & Diseño Gráfico</span>
+  </div>
+</footer>
+
+</body>
+</html>
